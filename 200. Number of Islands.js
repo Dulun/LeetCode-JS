@@ -9,17 +9,18 @@ const numIslands = (grid) => {
     for (let j in grid[i]) {
       if (grid[i][j] === '1') {
         res++
+        //i,j is string
         dfs(parseInt(i), parseInt(j), grid)
       }
     }
   }
   return res
 }
-
+// four way dfs
 const dfs = (i, j, a) => {
   if (a[i] === undefined || a[i][j] === undefined || a[i][j] === '0') return
   a[i][j] = '0'
-  //four way dfs, if only two way>&v, will count more
+  // if only two way>&v, will count more
   dfs(i + 1, j, a)
   dfs(i - 1, j, a)
   dfs(i, j + 1, a)
